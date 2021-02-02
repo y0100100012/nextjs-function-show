@@ -6,6 +6,7 @@ import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData, getVenData, getLayerControlData } from '../lib/posts'
 import api from '../lib/api'
 import EventList from '../components/EventList/EventList'
+import LineVenTitle from '../components/LineVenTitle'
 
 export default function Home({ allPostsData, venData, layerControlData }) {
   const [showPic, setShowPic] = useState(false);
@@ -17,6 +18,7 @@ export default function Home({ allPostsData, venData, layerControlData }) {
         <title>{siteTitle}</title>
       </Head>
       <h1>服务端文件读取测试:</h1>
+      <h2>文件数据来源于node所在的服务器</h2>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
@@ -30,33 +32,51 @@ export default function Home({ allPostsData, venData, layerControlData }) {
           ))}
         </ul>
       </section>
+      <br />
       <h1>服务端接口调用测试:</h1>
+      <h2>完全由服务器调用后端接口，直接将数据渲染到html文件</h2>
       <section>
         {JSON.stringify(venData)}
       </section>
-      <h1>路由测试:</h1>
-      <Link href="/posts/first-post">
-        <a>NEXT</a>
-      </Link>
+      <br />
       <h1>点击测试:</h1>
+      <h2>修改REACT的state，触发重新渲染</h2>
       <section>
         <button onClick={() => setShowPic(!showPic)}>点击测试</button>
         {showPic ? < img className={utilStyles.userPic} src="/images/profile.jpg"/> : null}
       </section>
+      <br />
       <h1>客户端接口调用测试:</h1>
+      <h2>由客户端调用接口，返回结果渲染到页面，可在F12中查看接口调用</h2>
       <section>
         <button onClick={async() => {
-          const response = await api.get(`http://10.45.26.100:17777/duty/info/ven/querySingle?venId=410100000000`, {});
+          // 在客户端执行，可在 F12 network中查看到
+          const response = await api.get(`http://10.45.26.100:18888/event/task/queryOne`, {});
           if(response.data && response.data.data){
             setVenClientData(response.data.data);
           }
         }}>查询</button>
         <code>{JSON.stringify(venClientData)}</code>
       </section>
+      <br />
       <h1>antd组件测试:</h1>
+      <h2>可使用antd组件，并正常加载其样式</h2>
       <section>
         <EventList layerControlData={layerControlData}/>
       </section>
+      <br />
+      <h1>react15类组件测试：</h1>
+      <h2>react15类组件</h2>
+      <section>
+        <LineVenTitle />
+      </section>
+      <br />
+      <h1>路由测试:</h1>
+      <h2>非整页刷新，不重复下载资源，同时具有预渲染功能</h2>
+      <Link href="/posts/first-post">
+        NEXT
+      </Link>
+      <br />
     </Layout>
   )
 }

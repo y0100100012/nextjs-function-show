@@ -1,0 +1,22 @@
+.lineVenTitleLine{
+  width: 300px;
+  height: 200px;
+  border: 1px solid royalblue;
+  margin: 20px;
+}
+
+.lineVenName{
+  background-color: rgba(100,100,23,0.3);
+  width: 100px;
+  height: 60px;
+  border: 1px solid royalblue;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.lineAddButton{
+  margin: 20px;
+}

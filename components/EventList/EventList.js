@@ -24,7 +24,7 @@ export default function EventList({ layerControlData }) {
   return (
     <div className={styles.eventListTable}>
       <h1>图层列表</h1>
-      <Table dataSource={layerControlData} columns={columns} />
+      <Table dataSource={layerControlData} columns={columns} rowKey="layerCode" />
     </div>
   )
 }
