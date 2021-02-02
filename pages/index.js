@@ -77,6 +77,16 @@ export default function Home({ allPostsData, venData, layerControlData }) {
         NEXT
       </Link>
       <br />
+      <h1>动态路由测试:</h1>
+      <h2>演示内容为将url末尾作为文件名，查询服务器上的对应文件并生成html，工程pages下并不存在pre-rendering和ssg-ssr两个页面文件</h2>
+      <Link href="/posts/pre-rendering">
+        pre-rendering
+      </Link>
+      <br />
+      <Link href="/posts/ssg-ssr">
+        ssg-ssr
+      </Link>
+      <br />
       <h1>结束</h1>
     </Layout>
   )
