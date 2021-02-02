@@ -92,6 +92,9 @@ export default function Home({ allPostsData, venData, layerControlData }) {
   )
 }
 
+// 服务端渲染，会在每次客户端请求html文件时执行，生成html
+// 不可与 getStaticProps 同时存在
+// 返回值将自动作为上方页面组件的参数
 export async function getServerSideProps(context) {
   const allPostsData = getSortedPostsData();
   const venData = await getVenData();
@@ -104,3 +107,18 @@ export async function getServerSideProps(context) {
     }
   }
 }
+
+// 静态生成，会在应用build时生成html
+// 不可与 getServerSideProps 同时存在
+// export async function getStaticProps() {
+//   const allPostsData = getSortedPostsData();
+//   const venData = {};
+//   const layerControlData = [];
+//   return {
+//     props: {
+//       allPostsData,
+//       venData,
+//       layerControlData
+//     }
+//   }
+// }
