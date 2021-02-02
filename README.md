@@ -26,3 +26,4 @@ pages目录下的每一个js对应一个路由地址，
 
 next.config.js  NEXT配置文件，配置NEXT的自定义功能
 pages/_app.js  NEXT应用入口文件，可用于添加全局样式
+pages/404.js  可替换默认的404页面

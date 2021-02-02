@@ -87,6 +87,11 @@ export default function Home({ allPostsData, venData, layerControlData }) {
         ssg-ssr
       </Link>
       <br />
+      <h1>API Routes测试:</h1>
+      <h2>可调用在node服务端执行的接口</h2>
+      <h2>尝试在浏览器地址栏输入<a href="/api/addNum?a=12&b=24" target="_blank">http://localhost:3001/api/addNum?a=12&b=24</a></h2>
+      
+      <br />
       <h1>结束</h1>
     </Layout>
   )
