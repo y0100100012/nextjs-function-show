@@ -77,6 +77,7 @@ export default function Home({ allPostsData, venData, layerControlData }) {
         NEXT
       </Link>
       <br />
+      <h1>结束</h1>
     </Layout>
   )
 }
