@@ -2,15 +2,27 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Layout from '../../components/layout/layout'
 
+// Hooks功能演示
 export default function FirstPost() {
   const [count, setCount] = useState(0);
+  // useEffect 会在每次渲染完成后，根据第二个参数指定的数值是否有变化，调用第一个参数的方法
+  // 
+  useEffect(() => {
+    // 替代componnetDidMount
+    console.log('初始化');
 
-  useEffect(() => {
-    console.log('初始化')
-    return () => {console.log('销毁')}
+    return () => {
+      // 替代componnetWillUnmount
+      console.log('销毁');
+    }
   }, []);
+
+  // 替代componentWillReceiveProps
   useEffect(() => {
-    console.log('count改变')
+    console.log('count改变');
+    return () => {
+      console.log('count销毁');
+    }
   }, [count]);
   return (
     <Layout pageId="thirdPage">

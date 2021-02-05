@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import Layout from '../../components/layout/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 
@@ -13,10 +14,13 @@ export default function Post({ postData }) {
       </Layout>
     )
   }
+  const router = useRouter();
+  const { pid } = router.query;
   return (
     <Layout>
       <Head>
         <title>{postData.title}</title>
+        <h2>Post: {pid}</h2>
       </Head>
       {postData.title}
       <br />

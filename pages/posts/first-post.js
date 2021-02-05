@@ -1,6 +1,6 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Layout from '../../components/layout/layout'
-import { queryLayer } from '../../lib/mysqlConnect'
 
 export default function FirstPost({ layerList }) {
   return (
@@ -11,21 +11,14 @@ export default function FirstPost({ layerList }) {
       </Head>
       <main>
         <h1>第二个页面</h1>
-        <div>{layerList.map(item => <div><span>{item.layerCode}</span><span>{item.layerName}</span></div>)}</div>
+        <Link href="/posts/pre-rendering">
+          pre-rendering
+        </Link>
+        <br />
+        <Link href="/posts/ssg-ssr">
+          ssg-ssr
+        </Link>
       </main>
     </Layout>
   )
-}
-
-export async function getServerSideProps(context) {
-  //查询sql
-  let layerList = await queryLayer();
-  if(!layerList){
-    layerList = [];
-  }
-  return {
-    props: {
-      layerList
-    }
-  }
 }
