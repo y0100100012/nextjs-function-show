@@ -11,12 +11,14 @@ import LineVenTitle from '../components/LineVenTitle'
 export default function Home({ allPostsData, venData, layerControlData }) {
   const [showPic, setShowPic] = useState(false);
   const [venClientData, setVenClientData] = useState({});
-   
+
   return (
-    <Layout home>
+    <Layout pageId="Home">
       <Head>
         <title>{siteTitle}</title>
       </Head>
+      <h1>导航栏路由演示↑</h1>
+      <br />
       <h1>服务端文件读取测试:</h1>
       <h2>文件数据来源于node所在的服务器</h2>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
@@ -50,7 +52,6 @@ export default function Home({ allPostsData, venData, layerControlData }) {
       <h2>由客户端调用接口，返回结果渲染到页面，可在F12中查看接口调用</h2>
       <section>
         <button onClick={async() => {
-          // 在客户端执行，可在 F12 network中查看到
           const response = await api.get(`http://10.45.26.100:18888/event/task/queryOne`, {});
           if(response.data && response.data.data){
             setVenClientData(response.data.data);
@@ -90,6 +91,11 @@ export default function Home({ allPostsData, venData, layerControlData }) {
       <h1>API Routes测试:</h1>
       <h2>可调用在node服务端执行的接口</h2>
       <h2>尝试在浏览器地址栏输入<a href="/api/addNum?a=12&b=24" target="_blank">http://localhost:3001/api/addNum?a=12&b=24</a></h2>
+      <br />
+      <h1>单页面antd组件性能测试:</h1>
+      <Link href="/antdTest/antdTest">
+        跳转
+      </Link>
       
       <br />
       <h1>结束</h1>
@@ -101,7 +107,9 @@ export default function Home({ allPostsData, venData, layerControlData }) {
 // 不可与 getStaticProps 同时存在
 // 返回值将自动作为上方页面组件的参数
 export async function getServerSideProps(context) {
+  //读取服务器本地文本资源
   const allPostsData = getSortedPostsData();
+  //调用接口获取数据
   const venData = await getVenData();
   const layerControlData = await getLayerControlData();
   return {

@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 3001"
   },
   "dependencies": {
     "antd": "^4.11.2",
     "axios": "^0.21.1",
     "babel-plugin-import": "^1.13.3",
     "gray-matter": "^4.0.2",
+    "mysql": "^2.18.1",
     "next": "^10.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1"

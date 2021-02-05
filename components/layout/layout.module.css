@@ -22,4 +22,23 @@
 
 .backToHome {
   margin: 3rem 0 0;
+  display: flex;
+}
+
+.linkTab{
+  display: flex;
+  width: 200px;
+  height: 60px;
+  background: rgba(0,0,0,0.2);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.linkTabActive{
+  background: rgba(0,0,0,0.4);
+}
+
+.linkTab:hover{
+  background: rgba(0,0,0,0.4);
 }
