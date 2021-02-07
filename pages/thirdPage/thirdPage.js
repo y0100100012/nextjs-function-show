@@ -3,10 +3,11 @@ import Link from 'next/link'
 import Layout from '../../components/layout/layout'
 
 // Hooks功能演示
-export default function FirstPost() {
+export default function thirdPage() {
   const [count, setCount] = useState(0);
   // useEffect 会在每次渲染完成后，根据第二个参数指定的数值是否有变化，调用第一个参数的方法
-  // 
+  // 第一个参数的方法a可return一个清理方法b，用于清理方法a产生的副作用，如方法a中请求资源，方法b中释放资源
+  // 第二个参数为 [] 时替代的为类组件的   替代componnetDidMount  componnetWillUnmount  功能
   useEffect(() => {
     // 替代componnetDidMount
     console.log('初始化');
@@ -17,11 +18,14 @@ export default function FirstPost() {
     }
   }, []);
 
-  // 替代componentWillReceiveProps
   useEffect(() => {
+    // 替代componentWillReceiveProps
     console.log('count改变');
     return () => {
-      console.log('count销毁');
+      // 下方处理该effect的清理工作
+      // 例如：effect是点击地图时，在地图上画一个点，
+      // 那么清理工作就是删除地图上的这个点，以便确保多次点击后，地图上只会保留最后的点
+      console.log('count清理');
     }
   }, [count]);
   return (

@@ -75,8 +75,11 @@ export default function Home({ allPostsData, venData, layerControlData }) {
       <h1>路由测试:</h1>
       <h2>非整页刷新，不重复下载资源，同时具有预渲染功能</h2>
       <Link href="/posts/first-post">
-        NEXT
+        非整页
       </Link>
+      <a href="/posts/first-post">
+        整页
+      </a>
       <br />
       <h1>动态路由测试:</h1>
       <h2>演示内容为将url末尾作为文件名，查询服务器上的对应文件并生成html，工程pages下并不存在pre-rendering和ssg-ssr两个页面文件</h2>

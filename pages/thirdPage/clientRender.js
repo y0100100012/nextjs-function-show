@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import api from '../../lib/api'
 
-export default function ServerRender({ }) {
+export default function clientRender({ }) {
   const [layerList, setLayerList] = useState([]);
 
   useEffect(async() => {
